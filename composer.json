@@ -1,0 +1,23 @@
+{
+    "name": "nora-php/http",
+    "authors": [
+        {
+            "name": "Hajime MATSUMOTO",
+            "email": "hajime.matsumoto@avap.co.jp"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Nora\\Http\\": "src"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.2"
+    },
+    "require": {
+        "psr/http-message": "^1.0"
+    }
+}
