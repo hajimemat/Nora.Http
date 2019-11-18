@@ -7,6 +7,8 @@ use Psr\Http\Message\{
     ResponseInterface
 };
 
+use Nora\Http\HttpStatusCode;
+
 /**
  * Representation of an outgoing, server-side response.
  *
@@ -83,6 +85,9 @@ class Response extends Message implements ResponseInterface
      */
     public function getReasonPhrase()
     {
+        if (!$this->reasonPhrase) {
+            return HttpStatusCode::$codes[$this->getStatusCode()];
+        }
         return $this->reasonPhrase;
     }
 

@@ -44,7 +44,9 @@ class Stream implements StreamInterface
      */
     public function close()
     {
-        fclose($this->stream);
+        if (is_resource($this->stream)) {
+            fclose($this->stream);
+        }
     }
 
     /**

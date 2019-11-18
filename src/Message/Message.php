@@ -242,6 +242,11 @@ class Message implements MessageInterface
      */
     public function getBody()
     {
+        // ストリームがセットされていなければセットする
+        if (!$this->body) {
+            $fp = fopen('php://memory', 'r+');
+            $this->body = new Stream($fp);
+        }
         return $this->body;
     }
 
@@ -294,5 +299,12 @@ class Message implements MessageInterface
             $instance->{$key} = $this->{$key};
         }
         return $instance;
+    }
+
+    public function __destruct()
+    {
+        if ($this->body) {
+            $this->body->close();
+        }
     }
 }
