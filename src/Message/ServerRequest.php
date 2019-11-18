@@ -54,6 +54,11 @@ class ServerRequest extends Request implements ServerRequestInterface
     private $data = [];
     private $attributes = [];
 
+    public function __construct(array $serverParams = [])
+    {
+        $this->_SERVER = $serverParams;
+    }
+
     /**
      * Retrieve server parameters.
      *
@@ -183,7 +188,9 @@ class ServerRequest extends Request implements ServerRequestInterface
      */
     public function withUploadedFiles(array $uploadedFiles)
     {
-        $this->uploadedFiles = $uploadedFiles;
+        $newInstance = $this->immutable();
+        $newInstance->uploadedFiles = $uploadedFiles;
+        return $newInstance;
     }
 
     /**
@@ -252,7 +259,10 @@ class ServerRequest extends Request implements ServerRequestInterface
      *
      * @return array Attributes derived from the request.
      */
-    public function getAttributes();
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
 
     /**
      * Retrieve a single derived request attribute.
@@ -269,7 +279,10 @@ class ServerRequest extends Request implements ServerRequestInterface
      * @param mixed $default Default value to return if the attribute does not exist.
      * @return mixed
      */
-    public function getAttribute($name, $default = null);
+    public function getAttribute($name, $default = null)
+    {
+        return $this->attributes[$name] ?? $default;
+    }
 
     /**
      * Return an instance with the specified derived request attribute.

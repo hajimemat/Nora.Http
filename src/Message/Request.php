@@ -6,7 +6,8 @@ namespace Nora\Http\Message;
 use Psr\Http\Message\{
     MessageInterface,
     RequestInterface,
-    StreamInterface
+    StreamInterface,
+    UriInterface
 };
 
 

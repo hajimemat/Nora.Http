@@ -18,6 +18,20 @@ class UploadedFile implements UploadedFileInterface
     private $error;
     private $name;
 
+    public function __construct(
+        string $name,
+        string $type,
+        string $tmpPath,
+        string $error,
+        int $size
+    ) {
+        $this->tmpPath = $tmpPath;
+        $this->name = $name;
+        $this->type = $type;
+        $this->error = $error;
+        $this->size = $size;
+    }
+
     /**
      * Retrieve a stream representing the uploaded file.
      *

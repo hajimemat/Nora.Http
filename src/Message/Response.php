@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Nora\Http\Message;
 
 use Psr\Http\Message\{
-    ResponsesInterface
+    ResponseInterface
 };
 
 /**
