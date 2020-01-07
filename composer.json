@@ -1,5 +1,8 @@
 {
-    "name": "nora-php/http",
+    "name": "avap/nora-http",
+    "description": "http library",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Hajime MATSUMOTO",
